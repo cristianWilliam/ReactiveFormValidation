@@ -1,0 +1,181 @@
+<div class="container">
+  <div class="card">
+    <span class="title"> Dados Pessoa </span>
+
+    <form #form="ngForm">
+      <div class="input-group">
+        <div class="input required">
+          <label>Nome</label>
+          <input
+            name="nome"
+            type="text"
+            [class.invalid]="nome.invalid && (nome.dirty || nome.touched)"
+            [(ngModel)]="model.nome"
+            required
+            #nome="ngModel"
+          />
+          <ng-container *ngIf="nome.invalid && (nome.dirty || nome.touched)">
+            <span *ngIf="nome.errors?.['required']">Campo Obrigatório</span>
+          </ng-container>
+        </div>
+
+        <div class="input required">
+          <label>Sobrenome</label>
+          <input
+            type="text"
+            required
+            name="sobrenome"
+            [(ngModel)]="model.sobrenome"
+            #sobrenome="ngModel"
+            [class.invalid]="sobrenome.invalid && (sobrenome.dirty || sobrenome.touched)"
+          />
+          <ng-container *ngIf="sobrenome.invalid && (sobrenome.dirty || sobrenome.touched)">
+            <span *ngIf="nome.errors?.['required']">Campo Obrigatório</span>
+          </ng-container>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <div class="input">
+          <label> Nacionalidade </label>
+          <select [(ngModel)]="model.nacionalidade" name="nacionalidade">
+            <option value=""></option>
+            <option value="1">Brasil</option>
+            <option value="2">Americana</option>
+          </select>
+        </div>
+
+        <div class="input required">
+          <label> Idade </label>
+          <input
+            type="number"
+            name="idade"
+            [(ngModel)]="model.idade"
+            required
+            min="18"
+            #idade="ngModel"
+            [class.invalid]="idade.invalid && (idade.dirty || idade.touched)"
+          />
+          <ng-container *ngIf="idade.invalid && (idade.dirty || idade.touched)">
+            <span *ngIf="idade.errors?.['required']">Campo Obrigatório</span>
+            <span *ngIf="idade.errors?.['min']">Idade deve ser no minimo 18</span>
+          </ng-container>
+        </div>
+
+        <div class="input">
+          <label> Data de Nascimento </label>
+          <input type="date" [(ngModel)]="model.dataNascimento" name="dataNascimento"/>
+        </div>
+      </div>
+
+      <span class="title mt-4">Endereço</span>
+
+      <div class="input-group">
+        <div class="input required">
+          <label>Rua:</label>
+          <input
+            type="text"
+            name="enderecoRua"
+            [(ngModel)]="model.endereco.rua"
+            required
+            #enderecoRua="ngModel"
+            [class.invalid]="
+              enderecoRua.invalid && (enderecoRua.dirty || enderecoRua.touched)
+            "
+          />
+          <ng-container
+            *ngIf="
+              enderecoRua.invalid && (enderecoRua.dirty || enderecoRua.touched)
+            "
+          >
+            <span *ngIf="enderecoRua.errors?.['required']"
+              >Campo Obrigatório</span
+            >
+          </ng-container>
+        </div>
+
+        <div class="input required">
+          <label>Bairro:</label>
+          <input
+            type="text"
+            name="enderecoBairro"
+            [(ngModel)]="model.endereco.bairro"
+            required
+            #enderecoBairro="ngModel"
+            [class.invalid]="enderecoBairro.invalid && (enderecoBairro.dirty || enderecoBairro.touched)"
+          />
+          <ng-container *ngIf="enderecoBairro.invalid && (enderecoBairro.dirty || enderecoBairro.touched)">
+            <span *ngIf="enderecoBairro.errors?.['required']">Campo Obrigatório</span>
+          </ng-container>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <div class="input required">
+          <label>CEP:</label>
+          <input
+            type="text"
+            name="enderecoCep"
+            [(ngModel)]="model.endereco.cep"
+            required
+            #enderecoCep="ngModel"
+            [class.invalid]="enderecoCep.invalid && (enderecoCep.dirty || enderecoCep.touched)"
+          />
+          <ng-container *ngIf="enderecoCep.invalid && (enderecoCep.dirty || enderecoCep.touched)">
+            <span *ngIf="enderecoCep.errors?.['required']">Campo Obrigatório</span>
+          </ng-container>
+        </div>
+
+        <div class="input required">
+          <label>Estado:</label>
+          <select
+            name="enderecoEstado"
+            required
+            [(ngModel)]="model.endereco.estado"
+            #enderecoEstado="ngModel"
+            [class.invalid]="enderecoEstado.invalid && (enderecoEstado.dirty || enderecoEstado.touched)"
+          >
+            <option value=""></option>
+            <option value="SP">SP</option>
+            <option value="MG">MG</option>
+          </select>
+          <ng-container *ngIf="enderecoEstado.invalid && (enderecoEstado.dirty || enderecoEstado.touched)">
+            <span *ngIf="enderecoEstado.errors?.['required']">Campo Obrigatório</span>
+          </ng-container>
+        </div>
+
+        <div class="input required">
+          <label>Cidade:</label>
+          <select
+            name="enderecoCidade"
+            required
+            [(ngModel)]="model.endereco.cidade"
+            #enderecoCidade="ngModel"
+            [class.invalid]="enderecoCidade.invalid && (enderecoCidade.dirty || enderecoCidade.touched)"
+          >
+            <option value=""></option>
+            <option value="São Paulo">São Paulo</option>
+            <option value="Itajuba">Itajuba</option>
+          </select>
+          <ng-container *ngIf="enderecoCidade.invalid && (enderecoCidade.dirty || enderecoCidade.touched)">
+            <span *ngIf="enderecoCidade.errors?.['required']">Campo Obrigatório</span>
+          </ng-container>
+        </div>
+      </div>
+
+      <div class="input">
+        <label>Complemento</label>
+        <input type="text" name="enderecoComplemento" [(ngModel)]="model.endereco.complemento" />
+      </div>
+
+      <div class="align-right mt-2">
+        <button class="btn" (click)="submit()">Form Console</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="card ml-4">
+    <pre>formValid: {{ form.valid | json }}</pre>
+    <pre>formValues: {{ form.value | json }}</pre>
+  </div>
+</div>

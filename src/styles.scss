@@ -1,1 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+@use './assets/form.scss';
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500;600;700&display=swap');
+
+$background-color: #EEEEEE;
+
+* {
+  font-family: 'Raleway', sans-serif;
+}
+
+body {
+  background-color: $background-color;
+}
+
