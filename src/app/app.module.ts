@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { ValidacaoComumComponent } from './pages/validacao-comum/validacao-comum.component';
 import { ValidacaoReactiveComponent } from './pages/validacao-reactive/validacao-reactive.component';
+import { InputComponent } from './components/input/input.component';
 
 const routes: Routes = [
   {
@@ -28,11 +29,13 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     ValidacaoComumComponent,
-    ValidacaoReactiveComponent
+    ValidacaoReactiveComponent,
+    InputComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes),
   ],
   providers: [],

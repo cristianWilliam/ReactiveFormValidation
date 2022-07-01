@@ -1,1 +1,25 @@
-<p>validacao-reactive works!</p>
+<div class="container">
+  <div class="card">
+    <span class="title"> Dados Pessoa </span>
+
+    <form [formGroup]="form">
+      
+      <app-input [type]="'text'" formControlName="nome">
+        Nome
+      </app-input>
+
+
+      <span class="title mt-4"> Endereco </span>
+      <ng-container formGroupName="endereco">
+        <app-input [type]="'text'" formControlName="rua" >Rua</app-input>
+      </ng-container>
+    </form>
+    <button class="btn mt-4" (click)="submit()">
+      Submit
+    </button>
+  </div>
+  <div class="card ml-4">
+    <pre> {{ form.value  | json }} </pre>
+    <pre>  </pre>
+  </div>
+</div>

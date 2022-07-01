@@ -1,0 +1,16 @@
+<div class="input">
+  <label>
+    <ng-content></ng-content>
+  </label>
+  <input
+    [type]="type"
+    [(ngModel)]="value"
+    (change)="onChange(value)"
+    (blur)="onTouched()"
+    [class.invalid]="formControl?.invalid && (formControl.dirty || formControl.touched)"
+  />
+  <ng-container *ngIf="formControl?.invalid && (formControl.dirty || formControl.touched)">
+    <span *ngIf="formControl.errors?.['required']">Campo Obrigatorio </span>
+    <span *ngIf="formControl.errors?.['valueExpected']">Valor Inválido </span>
+  </ng-container>
+</div>
